@@ -1,2 +1,2 @@
-# OI-codebase
-My OI code base.
+# OI-codelib
+My OI code library.
