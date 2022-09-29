@@ -1,16 +1,7 @@
-typedef long long ll;
-const int N=105,P=1e9+7;
+
 
 struct mat {
-	int l,c;
-	ll p[N][N];
-	ll* operator [] (int i) {return p[i];}
-	void out() {
-		for(int i=0;i<l;i++) {
-			for(int j=0;j<c;j++) cout<<p[i][j]<<' ';
-			cout<<endl;
-		}
-	}
+	int p[N][N];
 	void e() {
 		for(int i=0;i<l;i++) for(int j=0;j<c;j++) if(i==j) p[i][j]=1;
 	}
