@@ -1,13 +1,10 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-namespace DEBUG {
 void debug_out() { cerr << '\n'; }
 template <typename Head, typename... Tail>
 void debug_out(Head H, Tail... T) { cerr << ' ' << H, debug_out(T...); }
 #define debug(...) cerr << "[" << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
-}
-using namespace DEBUG;
 typedef long long ll;
 mt19937_64 rnd(chrono::steady_clock::now().time_since_epoch().count());
 ll rd(ll l, ll r) {
