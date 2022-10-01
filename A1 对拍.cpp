@@ -1,11 +1,5 @@
 #include <bits/stdc++.h>
-//#define compile
-//#define rename
-#ifdef rename
-#define make xxx
-#define good xxx
-#define force xxx
-#endif
+#define compile
 typedef long long ll;
 
 using namespace std;
