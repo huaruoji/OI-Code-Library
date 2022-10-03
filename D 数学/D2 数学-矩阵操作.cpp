@@ -18,16 +18,15 @@ struct Mat {
 			for(int j = 0; j < S; j++)
 				a[i][j] = b[i][j];
 	}
+	Mat<S>& operator*(const Mat<S> &b) {
+		Mat<S> c;
+		for(int i = 0; i < S; i++)
+			for(int k = 0; k < S; k++)
+				for(int j = 0; j < S; j++)
+					add(c.a[i][j], (ll)a[i][k] * b.a[k][j]);
+		return c;
+	}
 };
-template<int S>
-Mat<S> operator*(const Mat<S> &a, const Mat<S> &b) {
-	Mat<S> c;
-	for(int i = 0; i < S; i++)
-		for(int k = 0; k < S; k++)
-			for(int j = 0; j < S; j++)
-				add(c.a[i][j], (ll)a.a[i][k] * b.a[k][j]);
-	return c;
-}
 template<int S>
 Mat<S> fpm(Mat<S> a, int b) {
 	Mat<S> ans(true);
