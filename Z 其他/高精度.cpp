@@ -1,5 +1,5 @@
 struct BigInteger {
-  typedef unsigned long long LL;
+  typedef unsigned long long ll;
 
   static const int BASE = 100000000;
   static const int WIDTH = 8;
@@ -9,7 +9,7 @@ struct BigInteger {
     while (!s.back() && s.size() > 1) s.pop_back();
     return *this;
   }
-  BigInteger(LL num = 0) { *this = num; }
+  BigInteger(ll num = 0) { *this = num; }
   BigInteger(string s) { *this = s; }
   BigInteger& operator=(long long num) {
     s.clear();
@@ -63,15 +63,15 @@ struct BigInteger {
   }
   BigInteger operator*(const BigInteger& b) const {
     int i, j;
-    LL g;
-    vector<LL> v(s.size() + b.s.size(), 0);
+    ll g;
+    vector<ll> v(s.size() + b.s.size(), 0);
     BigInteger c;
     c.s.clear();
     for (i = 0; i < s.size(); i++)
-      for (j = 0; j < b.s.size(); j++) v[i + j] += LL(s[i]) * b.s[j];
+      for (j = 0; j < b.s.size(); j++) v[i + j] += ll(s[i]) * b.s[j];
     for (i = 0, g = 0;; i++) {
       if (g == 0 && i >= v.size()) break;
-      LL x = v[i] + g;
+      ll x = v[i] + g;
       c.s.emplace_back(x % BASE);
       g = x / BASE;
     }
