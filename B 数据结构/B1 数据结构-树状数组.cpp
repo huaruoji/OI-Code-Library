@@ -1,12 +1,17 @@
-namespace BIT {
-	int c[N];
-	int lowbit(int x) {return x & (-x);}
-	void update(int x, int k) {while(x <= n) c[x] += k, x += lowbit(x);}
-	int query(int x, int sum = 0) {while(x) sum += c[x], x -= lowbit(x); return sum;}
-}
-namespace BIT {
-	int c[N];
-	int lowbit(int x) {return x & (-x);}
-	void update(int x, int k) {while(x <= n) c[x] += k, x += lowbit(x);}
-	int query(int x, int sum = 0) {while(x) sum += c[x], x -= lowbit(x); return sum;}
-}
+struct BIT {
+  int c[N];
+  int query(int x) {
+    int ans = 0;
+    while(x) {
+      ans += c[x];
+      x -= x & -x;
+    }
+    return ans;
+  }
+  void update(int x, int k) {
+    while(x < N) {
+      c[x] += k;
+      x += x & -x;
+    }
+  }
+} T;
