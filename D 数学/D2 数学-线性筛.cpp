@@ -1,15 +1,14 @@
-void sieve() {
-	phi[1] = 1, flag[1] = true;
-	for(int i = 1, to; i < N; i++) {
-		if(!flag[i]) phi[i] = i - 1, prime[++cnt] = i;
-		for(int j = 1; j <= cnt; j++) {
-			to = i * prime[j];
-			if(to >= N) break;
-			flag[to] = true;
-			if(i % prime[j] == 0) {
-				phi[to] = prime[j] * phi[i];
-				break;
-			} else phi[to] = (prime[j] - 1) * phi[i];
+vector<int> prime;
+bool flag[N];
+void sieve(int n) {
+  prime.reserve(n / 10);
+	for(int i = 2; i <= n; i++) {
+		if(!flag[i]) prime.emplace_back(i);
+		for(int p : prime) {
+			int v = i * p;
+			if(v > n) break;
+			flag[v] = true;
+			if(i % p == 0) break;
 		}
 	}
 }
