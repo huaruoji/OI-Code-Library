@@ -8,5 +8,5 @@ void debug_out(Head H, Tail... T) { cerr << ' ' << H, debug_out(T...); }
 
 int main() {
 	
-	return 0;
+  return 0;
 }

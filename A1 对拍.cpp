@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 #define compile
-typedef long long ll;
 
 using namespace std;
 
