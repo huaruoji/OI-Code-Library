@@ -25,9 +25,9 @@ struct ha {
 	friend ha operator<<(const ha &a, int k) { 
 		return ha((ll)a.c[0] * Bp[k][0] % P[0], (ll)a.c[1] * Bp[k][1] % P[1]); 
 	}
-	friend ostream& operator<<(ostream &, ha &x) {
-		cout << '(' << x.c[0] << ' ' << x.c[1] << ')';
-		return cout;
+	friend ostream& operator<<(ostream &os, ha &x) {
+		os << '(' << x.c[0] << ' ' << x.c[1] << ')';
+		return os;
 	}
 	friend bool operator==(const ha &a, const ha &b) { 
 		return a.c[0] == b.c[0] && a.c[1] == b.c[1]; 
