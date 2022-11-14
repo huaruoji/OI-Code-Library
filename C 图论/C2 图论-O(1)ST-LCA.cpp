@@ -1,25 +1,29 @@
-#define gmin(x, y) (d[x] < d[y] ? x : y)
-int cnt, d[N], dfn[N], st[MH + 1][N << 1], q[N << 1], lg[N << 1];
-void dfs(int u, int f) {
-  d[u] = d[f] + 1, st[0][++cnt] = u, dfn[u] = cnt;
-  for (int v : g[u]) {
-    if (v == f) continue;
-    dfs(v, u), st[0][++cnt] = u;
+struct Tree {
+  static const int MH = 18;
+  int dfc, idx, dfn[N], fa[N], d[N], f[N << 1][MH + 1], q[N << 1], lg2[N << 1];
+  vector<int> g[N];
+  void dfs(int u, int f) {
+    d[u] = d[f] + 1, q[++idx] = u;
+    dfn[u] = idx, fa[u] = f;
+    for(int v : g[u]) {
+      if(v == f) continue;
+      dfs(v, u), q[++idx] = u;
+    }
   }
-}
-void init() {
-  dfs(1, 0);
-  for (int i = 2; i <= cnt; i++) lg[i] = lg[i >> 1] + 1;
-  for (int i = 1; i <= MH; i++) {
-    int w = 1 << (i - 1);
-    for (int j = cnt - w * 2 + 1; j >= 1; j--)
-      st[i][j] = gmin(st[i - 1][j], st[i - 1][j + w]);
+  int lca(int u, int v) {
+    u = dfn[u], v = dfn[v];
+    if(u > v) swap(u, v);
+    int k = lg2[v - u + 1], f1 = f[u][k], f2 = f[v - (1 << k) + 1][k];
+    return d[f1] < d[f2] ? f1 : f2;
   }
-}
-int getLca(int x, int y) {
-  x = dfn[x], y = dfn[y];
-  if (x > y) swap(x, y);
-  int k = lg[y - x + 1];
-  return gmin(st[k][x], st[k][y - (1 << k) + 1]);
-}
-#undef gmin
+  void build() {
+    dfs(1, 0);
+    for(int i = 2; i <= idx; i++) lg2[i] = lg2[i >> 1] + 1, f[i][0] = q[i];
+    for(int j = 1; j <= MH; j++) {
+      for(int i = 1; i + (1 << j) <= idx; i++) {
+        int f1 = f[i][j - 1], f2 = f[i + (1 << (j - 1))][j - 1];
+        f[i][j] = d[f1] < d[f2] ? f1 : f2;
+      }
+    }
+  }
+} T;
