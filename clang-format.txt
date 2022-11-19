@@ -2,7 +2,7 @@
 BasedOnStyle: LLVM
 AllowShortBlocksOnASingleLine: 'true'
 AllowShortCaseLabelsOnASingleLine: 'true'
-AllowShortIfStatementsOnASingleLine: Always
+AllowShortIfStatementsOnASingleLine: AllIfsAndElse
 AllowShortLoopsOnASingleLine: 'true'
 BreakBeforeTernaryOperators: 'true'
 SpaceAfterTemplateKeyword: 'false'
@@ -10,4 +10,4 @@ SpaceBeforeParens: Never
 TabWidth: '2'
 UseTab: Never
 
----
+...

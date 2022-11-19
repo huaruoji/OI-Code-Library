@@ -18,7 +18,8 @@ struct Tree {
   }
   void build() {
     dfs(1, 0);
-    for(int i = 2; i <= idx; i++) lg2[i] = lg2[i >> 1] + 1, f[i][0] = q[i];
+    lg2[0] = -1;
+    for(int i = 1; i <= idx; i++) lg2[i] = lg2[i >> 1] + 1, f[i][0] = q[i];
     for(int j = 1; j <= MH; j++) {
       for(int i = 1; i + (1 << j) <= idx; i++) {
         int f1 = f[i][j - 1], f2 = f[i + (1 << (j - 1))][j - 1];

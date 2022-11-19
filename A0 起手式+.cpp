@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 
 using namespace std;
-void debug_out() { cerr << '\n'; }
-template<typename Head, typename... Tail> void debug_out(Head H, Tail... T) {
-  cerr << ' ' << H, debug_out(T...);
-}
-#define debug(...) cerr << '[' << #__VA_ARGS__ << "]:", debug_out(__VA_ARGS__)
+#ifdef HRJ
+#include "debug.h"
+#else
+#define debug(...)
+#endif
 struct FastReader {
   // attention: once you use fin you can not use cin or scanf anymore.
   char B[1 << 16], *S = B, *T = B;
